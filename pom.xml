@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>com.starchenko</groupId>
 	<artifactId>hotel-management-api</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>1.1</version>
 	<name>hotel-management-api</name>
 	<description>Spring Boot REST API for hotel booking and management</description>
 	<url/>
