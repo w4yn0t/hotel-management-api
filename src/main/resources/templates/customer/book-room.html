@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Замовити номер</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+<header>
+    <h1>Замовити номер</h1>
+</header>
+<main>
+    <form th:action="@{/customer/book-room}" method="post" class="form-container">
+        <div class="form-group">
+            <label for="name">Ім'я:</label>
+            <input type="text" id="name" name="name" required>
+        </div>
+        <div class="form-group">
+            <label for="email">Електронна пошта:</label>
+            <input type="email" id="email" name="email" th:value="${#authentication.name}" readonly required>
+        </div>
+        <div class="form-group">
+            <label for="phone">Телефон:</label>
+            <input type="tel" id="phone" name="phoneNumber" required>
+        </div>
+        <div class="form-group">
+            <label for="roomId">Кімната:</label>
+            <select id="roomId" name="roomId" required>
+                <option value="" disabled selected>Оберіть кімнату</option>
+                <option th:each="room : ${rooms}" th:value="${room.id}" th:text="${room.number}"></option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="checkInDate">Дата заїзду:</label>
+            <input type="date" id="checkInDate" name="checkInDate" required>
+        </div>
+        <div class="form-group">
+            <label for="checkOutDate">Дата виїзду:</label>
+            <input type="date" id="checkOutDate" name="checkOutDate" required>
+        </div>
+        <div class="form-actions">
+            <button type="submit" class="button">Замовити</button>
+            <a th:href="@{/home}" class="button cancel-button">Скасувати</a>
+        </div>
+    </form>
+</main>
+</body>
+</html>

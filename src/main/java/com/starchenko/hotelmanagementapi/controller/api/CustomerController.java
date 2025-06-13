@@ -1,4 +1,4 @@
-package com.starchenko.hotelmanagementapi.controller;
+package com.starchenko.hotelmanagementapi.controller.api;
 
 import com.starchenko.hotelmanagementapi.model.Customer;
 import com.starchenko.hotelmanagementapi.service.CustomerService;
@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/customers")
+@RequestMapping("/api/customers")
 public class CustomerController {
 
     @Autowired

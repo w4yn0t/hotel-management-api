@@ -1,0 +1,129 @@
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden; /* Prevent horizontal overflow */
+    display: flex;
+    flex-direction: column;
+    background: linear-gradient(135deg, #f4f4f4, #e0e0e0); /* Gradient background */
+    background-size: cover; /* Ensure the background covers the viewport */
+}
+
+header {
+    background-color: #4CAF50;
+    color: white;
+    padding: 20px;
+    text-align: center;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+main {
+    flex: 1; /* Ensures the main content takes up remaining space */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+footer {
+    background-color: #4CAF50;
+    color: white;
+    text-align: center;
+    padding: 10px;
+    width: 100%;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.form-container {
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 50px; /* Increased padding */
+    max-width: 600px; /* Increased width */
+    margin: 50px auto;
+    text-align: center;
+    position: relative; /* Enable positioning for child elements */
+}
+
+.form-group {
+    margin-bottom: 25px; /* Increased spacing between form groups */
+}
+
+.form-group label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 10px; /* Increased spacing below labels */
+    font-size: 16px; /* Increased font size */
+}
+
+.form-group input, .form-group select {
+    width: 100%;
+    padding: 15px; /* Increased padding */
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px; /* Increased font size */
+}
+
+.form-actions {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px; /* Increased spacing between buttons */
+    margin-top: 30px; /* Increased margin above actions */
+}
+
+.button {
+    padding: 15px 25px; /* Increased button size */
+    font-size: 16px; /* Increased font size */
+    font-weight: bold;
+    color: white;
+    background-color: #4CAF50;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+    text-align: center;
+    transition: background-color 0.3s ease;
+}
+
+.button:hover {
+    background-color: #45A049;
+}
+
+.home-arrow {
+    font-size: 28px; /* Increased arrow size */
+    color: #4CAF50;
+    text-decoration: none;
+    cursor: pointer;
+    transition: color 0.3s ease;
+    position: absolute;
+    top: 15px; /* Adjusted position */
+    left: 15px; /* Adjusted position */
+}
+
+.home-arrow:hover {
+    color: #45A049;
+}
+
+.form-footer {
+    text-align: center;
+    margin-top: 30px; /* Increased margin above footer */
+    font-size: 16px; /* Increased font size */
+}
+
+.form-footer a {
+    color: #4CAF50;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.form-footer a:hover {
+    text-decoration: underline;
+}

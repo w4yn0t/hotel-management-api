@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Список бронювань</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+<header>
+    <h1>Список бронювань</h1>
+</header>
+<main>
+    <div class="actions">
+        <a th:href="@{/admin/bookings/add}" class="button">Додати бронювання</a>
+        <a th:href="@{/home}" class="button">На головну</a>
+    </div>
+    <table>
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Клієнт</th>
+            <th>Кімната</th>
+            <th>Дата заїзду</th>
+            <th>Дата виїзду</th>
+            <th>Дії</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="booking : ${bookings}">
+            <td th:text="${booking.id}"></td>
+            <td th:text="${booking.customer.name}"></td>
+            <td th:text="${booking.room.number}"></td>
+            <td th:text="${booking.checkInDate}"></td>
+            <td th:text="${booking.checkOutDate}"></td>
+            <td>
+                <a th:href="@{/admin/bookings/details/{id}(id=${booking.id})}" class="button">Деталі</a>
+                <a th:href="@{/admin/bookings/edit/{id}(id=${booking.id})}" class="button">Редагувати</a>
+                <form th:action="@{/admin/bookings/delete/{id}(id=${booking.id})}" method="post" style="display:inline;">
+                    <button type="submit" class="button cancel-button">Видалити</button>
+                </form>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</main>
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Додати бронювання</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+<header>
+    <h1>Додати бронювання</h1>
+</header>
+<main>
+    <form th:action="@{/admin/bookings/add}" method="post" class="form-container">
+        <div class="form-group">
+            <label for="customerId">Клієнт:</label>
+            <select id="customerId" name="customerId" required>
+                <option value="" disabled selected>Оберіть клієнта</option>
+                <option th:each="customer : ${customers}" th:value="${customer.id}" th:text="${customer.name}"></option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="roomId">Кімната:</label>
+            <select id="roomId" name="roomId" required>
+                <option value="" disabled selected>Оберіть кімнату</option>
+                <option th:each="room : ${rooms}" th:value="${room.id}" th:text="${room.number}"></option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="checkInDate">Дата заїзду:</label>
+            <input type="date" id="checkInDate" name="checkInDate" required>
+        </div>
+        <div class="form-group">
+            <label for="checkOutDate">Дата виїзду:</label>
+            <input type="date" id="checkOutDate" name="checkOutDate" required>
+        </div>
+        <div class="form-group">
+            <label for="status">Статус:</label>
+            <select id="status" name="status" required>
+                <option value="CONFIRMED">Підтверджено</option>
+                <option value="PENDING">Очікується</option>
+                <option value="CANCELLED">Скасовано</option>
+            </select>
+        </div>
+        <div class="form-actions">
+            <button type="submit" class="button">Додати</button>
+            <a th:href="@{/admin/bookings}" class="button cancel-button">Скасувати</a>
+        </div>
+    </form>
+</main>
+</body>
+</html>

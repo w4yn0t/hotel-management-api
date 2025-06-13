@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Редагувати кімнату</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+<header>
+    <h1>Редагувати кімнату</h1>
+</header>
+<main>
+    <form th:action="@{/admin/rooms/edit/{id}(id=${room.id})}" method="post" class="form-container">
+        <div class="form-group">
+            <label for="number">Номер кімнати:</label>
+            <input type="text" id="number" name="number" th:value="${room.number}" required>
+        </div>
+        <div class="form-group">
+            <label for="type">Тип кімнати:</label>
+            <select id="type" name="type" required>
+                <option value="" disabled>Оберіть тип</option>
+                <option value="SINGLE" th:selected="${room.type == 'SINGLE'}">Одномісна</option>
+                <option value="DOUBLE" th:selected="${room.type == 'DOUBLE'}">Двомісна</option>
+                <option value="SUITE" th:selected="${room.type == 'SUITE'}">Люкс</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="pricePerNight">Ціна за ніч:</label>
+            <input type="number" id="pricePerNight" name="pricePerNight" th:value="${room.pricePerNight}" step="0.01" required>
+        </div>
+        <div class="form-group">
+            <label for="isAvailable">Доступність:</label>
+            <select id="isAvailable" name="isAvailable" required>
+                <option value="true" th:selected="${room.isAvailable == true}">Доступна</option>
+                <option value="false" th:selected="${room.isAvailable == false}">Недоступна</option>
+            </select>
+        </div>
+        <div class="form-actions">
+            <button type="submit" class="button">Зберегти</button>
+            <a th:href="@{/admin/rooms}" class="button cancel-button">Скасувати</a>
+        </div>
+    </form>
+</main>
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Список кімнат</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+<header>
+    <h1>Список кімнат</h1>
+</header>
+<main>
+    <div class="actions">
+        <a th:href="@{/admin/rooms/add}" class="button">Додати кімнату</a>
+        <a th:href="@{/home}" class="button">На головну</a>
+    </div>
+    <table>
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Номер</th>
+            <th>Тип</th>
+            <th>Ціна за ніч</th>
+            <th>Доступність</th>
+            <th>Дії</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="room : ${rooms}">
+            <td th:text="${room.id}"></td>
+            <td th:text="${room.number}"></td>
+            <td th:text="${room.type}"></td>
+            <td th:text="${room.pricePerNight}"></td>
+            <td th:text="${room.isAvailable ? 'Доступна' : 'Недоступна'}"></td>
+            <td>
+                <a th:href="@{/admin/rooms/edit/{id}(id=${room.id})}" class="button">Редагувати</a>
+                <form th:action="@{/admin/rooms/delete/{id}(id=${room.id})}" method="post" style="display:inline;">
+                    <button type="submit" class="button cancel-button">Видалити</button>
+                </form>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</main>
+</body>
+</html>

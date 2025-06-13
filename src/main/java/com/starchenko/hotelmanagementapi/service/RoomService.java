@@ -16,11 +16,30 @@ public class RoomService {
         return roomRepository.findAll();
     }
 
+    public List<Room> getAvailableRooms() {
+        return roomRepository.findByIsAvailableTrue();
+    }
+
     public Room createRoom(Room room) {
         return roomRepository.save(room);
     }
 
     public Room getRoomById(Long id) {
         return roomRepository.findById(id).orElseThrow(() -> new RuntimeException("Room not found"));
+    }
+
+    public Room updateRoom(Long id, Room room) {
+        if (!roomRepository.existsById(id)) {
+            throw new RuntimeException("Customer not found");
+        }
+        room.setId(id);
+        return roomRepository.save(room);
+    }
+
+    public void deleteRoom(Long id) {
+        if (!roomRepository.existsById(id)) {
+            throw new RuntimeException("Customer not found");
+        }
+        roomRepository.deleteById(id);
     }
 }

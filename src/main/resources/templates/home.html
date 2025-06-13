@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Головна сторінка</title>
+    <link rel="stylesheet" th:href="@{/css/home.css}">
+</head>
+<body>
+<header>
+    <h1>Ласкаво просимо до Hotel Management</h1>
+    <div class="header-buttons">
+        <span sec:authorize="isAuthenticated()">
+            Ви увійшли як: <span sec:authentication="principal.username"></span><br>
+            Ваша роль:
+            <span th:text="${#strings.replace(#strings.replace(#authentication.authorities,'[',''),']','').replace('ROLE_','')}"></span>
+        </span>
+        <form th:action="@{/logout}" method="post" sec:authorize="isAuthenticated()">
+            <button type="submit" class="button">Вийти</button>
+        </form>
+        <a th:href="@{/register}" class="button" sec:authorize="!isAuthenticated()">Реєстрація</a>
+        <a th:href="@{/login}" class="button" sec:authorize="!isAuthenticated()">Логін</a>
+    </div>
+</header>
+<main>
+    <section class="welcome">
+        <p>Керуйте своїми бронюваннями, номерами та клієнтами легко та зручно.</p>
+    </section>
+    <section class="cards">
+        <h2>Функціонал адміністратора</h2>
+        <div class="card-container">
+            <a th:href="@{/admin/customers}" class="card">
+                <h3>Список клієнтів</h3>
+                <p>Перегляньте список усіх клієнтів.</p>
+            </a>
+            <a th:href="@{/admin/rooms}" class="card">
+                <h3>Список номерів</h3>
+                <p>Перегляньте доступні номери.</p>
+            </a>
+            <a th:href="@{/admin/bookings}" class="card">
+                <h3>Список замовлень</h3>
+                <p>Перегляньте всі замовлення.</p>
+            </a>
+        </div>
+    </section>
+    <section class="cards">
+        <h2>Функціонал клієнта</h2>
+        <div class="card-container">
+            <a th:href="@{/customer/book-room}" class="card">
+                <h3>Бронювання номера</h3>
+                <p>Оберіть номер для бронювання.</p>
+            </a>
+            <a th:href="@{/customer/my-bookings}" class="card">
+                <h3>Мої бронювання</h3>
+                <p>Перегляньте свої бронювання.</p>
+            </a>
+        </div>
+    </section>
+</main>
+<footer>
+    <p>&copy; 2025 Hotel Management</p>
+</footer>
+</body>
+</html>

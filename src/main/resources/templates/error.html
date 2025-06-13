@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Error</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 20px;
+        }
+        h1 {
+            color: #d32f2f;
+        }
+        p {
+            color: #555;
+        }
+    </style>
+</head>
+<body>
+<h1>Oops! Something went wrong.</h1>
+<p>Status: <span th:text="${status}"></span></p>
+<p>Error: <span th:text="${error}"></span></p>
+<p>Message: <span th:text="${message}"></span></p>
+<p>Timestamp: <span th:text="${timestamp}"></span></p>
+<a href="/home">Go to Home</a>
+</body>
+</html>

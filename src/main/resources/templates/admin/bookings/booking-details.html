@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Деталі бронювання</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+<header>
+    <h1>Деталі бронювання</h1>
+</header>
+<main>
+    <form class="form-container">
+        <div class="form-group">
+            <label>Клієнт:</label>
+            <input type="text" th:value="${booking.customer.name}" readonly>
+        </div>
+        <div class="form-group">
+            <label>Електронна пошта:</label>
+            <input type="text" th:value="${booking.customer.email}" readonly>
+        </div>
+        <div class="form-group">
+            <label>Телефон:</label>
+            <input type="text" th:value="${booking.customer.phoneNumber}" readonly>
+        </div>
+        <div class="form-group">
+            <label>Номер кімнати:</label>
+            <input type="text" th:value="${booking.room.number}" readonly>
+        </div>
+        <div class="form-group">
+            <label>Тип кімнати:</label>
+            <input type="text" th:value="${booking.room.type}" readonly>
+        </div>
+        <div class="form-group">
+            <label>Ціна за ніч:</label>
+            <input type="text" th:value="${booking.room.pricePerNight}" readonly>
+        </div>
+        <div class="form-group">
+            <label>Дата заїзду:</label>
+            <input type="text" th:value="${booking.checkInDate}" readonly>
+        </div>
+        <div class="form-group">
+            <label>Дата виїзду:</label>
+            <input type="text" th:value="${booking.checkOutDate}" readonly>
+        </div>
+        <div class="form-group">
+            <label>Статус:</label>
+            <input type="text" th:value="${booking.status}" readonly>
+        </div>
+        <div class="form-actions">
+            <a th:href="@{/admin/bookings}" class="button">Повернутися до списку</a>
+            <a th:href="@{/admin/bookings/edit/{id}(id=${booking.id})}" class="button">Редагувати</a>
+        </div>
+    </form>
+</main>
+</body>
+</html>
