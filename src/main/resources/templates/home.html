@@ -12,7 +12,7 @@
 <header>
     <h1>Ласкаво просимо до Hotel Management</h1>
     <div class="header-buttons">
-        <span sec:authorize="isAuthenticated()">
+        <span sec:authorize="isAuthenticated()" class="green-text">
             Ви увійшли як: <span sec:authentication="principal.username"></span><br>
             Ваша роль:
             <span th:text="${#strings.replace(#strings.replace(#authentication.authorities,'[',''),']','').replace('ROLE_','')}"></span>
@@ -28,7 +28,7 @@
     <section class="welcome">
         <p>Керуйте своїми бронюваннями, номерами та клієнтами легко та зручно.</p>
     </section>
-    <section class="cards">
+    <section class="cards" sec:authorize="hasRole('ADMIN')">
         <h2>Функціонал адміністратора</h2>
         <div class="card-container">
             <a th:href="@{/admin/customers}" class="card">
@@ -45,7 +45,7 @@
             </a>
         </div>
     </section>
-    <section class="cards">
+    <section class="cards" sec:authorize="hasRole('USER')">
         <h2>Функціонал клієнта</h2>
         <div class="card-container">
             <a th:href="@{/customer/book-room}" class="card">

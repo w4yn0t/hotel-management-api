@@ -1,29 +1,80 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="uk" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Error</title>
+    <title>Сталася помилка</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background: linear-gradient(135deg, #f8fafc 0%, #e0f7fa 100%);
+            color: #1a202c;
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .error-container {
+            background: #fff;
+            border-radius: 16px;
+            box-shadow: 0 4px 24px rgba(76, 175, 80, 0.12);
+            padding: 40px 30px;
+            max-width: 420px;
+            width: 100%;
             text-align: center;
-            padding: 20px;
+        }
+        .error-icon {
+            font-size: 60px;
+            color: #f44336;
+            margin-bottom: 24px;
         }
         h1 {
-            color: #d32f2f;
+            margin-top: 0;
+            color: #f44336;
+            font-size: 2.2rem;
         }
-        p {
+        .error-details {
+            margin: 18px 0 28px 0;
             color: #555;
+        }
+        .back-home {
+            display: inline-block;
+            background: #4CAF50;
+            color: #fff;
+            padding: 12px 32px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            box-shadow: 0 2px 8px rgba(76, 175, 80, 0.08);
+            transition: background 0.2s;
+        }
+        .back-home:hover {
+            background: #388e3c;
+        }
+        @media (max-width: 600px) {
+            .error-container {
+                padding: 24px 8px;
+            }
+            .error-icon {
+                font-size: 40px;
+            }
         }
     </style>
 </head>
 <body>
-<h1>Oops! Something went wrong.</h1>
-<p>Status: <span th:text="${status}"></span></p>
-<p>Error: <span th:text="${error}"></span></p>
-<p>Message: <span th:text="${message}"></span></p>
-<p>Timestamp: <span th:text="${timestamp}"></span></p>
-<a href="/home">Go to Home</a>
+<div class="error-container">
+    <div class="error-icon">😢</div>
+    <h1>Щось пішло не так</h1>
+    <div class="error-details">
+        <div><b>Статус:</b> <span th:text="${status}">???</span></div>
+        <div><b>Помилка:</b> <span th:text="${error}">???</span></div>
+        <div><b>Повідомлення:</b> <span th:text="${message}">???</span></div>
+        <div><small><b>Час:</b> <span th:text="${timestamp}">???</span></small></div>
+    </div>
+    <a href="/home" class="back-home">На головну</a>
+</div>
 </body>
 </html>

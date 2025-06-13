@@ -2,11 +2,11 @@ html, body {
     height: 100%;
     margin: 0;
     padding: 0;
-    overflow-x: hidden; /* Prevent horizontal overflow */
+    overflow-x: hidden;
     display: flex;
     flex-direction: column;
-    background: linear-gradient(135deg, #f4f4f4, #e0e0e0); /* Gradient background */
-    background-size: cover; /* Ensure the background covers the viewport */
+    background: linear-gradient(135deg, #f4f4f4, #e0e0e0);
+    background-size: cover;
 }
 
 header {
@@ -19,7 +19,7 @@ header {
 }
 
 main {
-    flex: 1; /* Ensures the main content takes up remaining space */
+    flex: 1;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -45,43 +45,43 @@ body {
     border: 1px solid #ddd;
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    padding: 50px; /* Increased padding */
-    max-width: 600px; /* Increased width */
+    padding: 50px;
+    max-width: 600px;
     margin: 50px auto;
     text-align: center;
-    position: relative; /* Enable positioning for child elements */
+    position: relative;
 }
 
 .form-group {
-    margin-bottom: 25px; /* Increased spacing between form groups */
+    margin-bottom: 25px;
 }
 
 .form-group label {
     display: block;
     font-weight: bold;
-    margin-bottom: 10px; /* Increased spacing below labels */
-    font-size: 16px; /* Increased font size */
+    margin-bottom: 10px;
+    font-size: 16px;
 }
 
 .form-group input, .form-group select {
     width: 100%;
-    padding: 15px; /* Increased padding */
+    padding: 15px;
     border: 1px solid #ccc;
     border-radius: 5px;
-    font-size: 16px; /* Increased font size */
+    font-size: 16px;
 }
 
 .form-actions {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 20px; /* Increased spacing between buttons */
-    margin-top: 30px; /* Increased margin above actions */
+    gap: 20px;
+    margin-top: 30px;
 }
 
 .button {
-    padding: 15px 25px; /* Increased button size */
-    font-size: 16px; /* Increased font size */
+    padding: 15px 25px;
+    font-size: 16px;
     font-weight: bold;
     color: white;
     background-color: #4CAF50;
@@ -98,14 +98,14 @@ body {
 }
 
 .home-arrow {
-    font-size: 28px; /* Increased arrow size */
+    font-size: 28px;
     color: #4CAF50;
     text-decoration: none;
     cursor: pointer;
     transition: color 0.3s ease;
     position: absolute;
-    top: 15px; /* Adjusted position */
-    left: 15px; /* Adjusted position */
+    top: 15px;
+    left: 15px;
 }
 
 .home-arrow:hover {
@@ -114,8 +114,8 @@ body {
 
 .form-footer {
     text-align: center;
-    margin-top: 30px; /* Increased margin above footer */
-    font-size: 16px; /* Increased font size */
+    margin-top: 30px;
+    font-size: 16px;
 }
 
 .form-footer a {

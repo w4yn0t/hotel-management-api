@@ -9,6 +9,12 @@
     <h1>Список клієнтів</h1>
 </header>
 <main>
+    <div th:if="${param.success}" class="success-message">
+        Операцію виконано успішно!
+    </div>
+    <div th:if="${param.error}" class="error-message">
+        Сталася помилка під час виконання операції.
+    </div>
     <div class="actions">
         <a th:href="@{/admin/customers/add}" class="button">Додати клієнта</a>
         <a th:href="@{/home}" class="button">На головну</a>

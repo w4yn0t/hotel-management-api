@@ -87,8 +87,12 @@ public class WebController {
 
     @PostMapping("/admin/customers/add")
     public String addCustomer(@ModelAttribute Customer customer) {
-        customerService.createCustomer(customer);
-        return "redirect:/admin/customers";
+        try {
+            customerService.createCustomer(customer);
+            return "redirect:/admin/customers?success";
+        } catch (Exception e) {
+            return "redirect:/admin/customers?error";
+        }
     }
 
     @GetMapping("/admin/customers/edit/{id}")
@@ -100,14 +104,22 @@ public class WebController {
     @PostMapping("/admin/customers/edit/{id}")
     public String editCustomer(@PathVariable Long id,
                                @ModelAttribute Customer customer) {
-        customerService.updateCustomer(id, customer);
-        return "redirect:/admin/customers";
+        try {
+            customerService.updateCustomer(id, customer);
+            return "redirect:/admin/customers?success";
+        } catch (Exception e) {
+            return "redirect:/admin/customers?error";
+        }
     }
 
     @PostMapping("/admin/customers/delete/{id}")
     public String deleteCustomer(@PathVariable Long id) {
-        customerService.deleteCustomer(id);
-        return "redirect:/admin/customers";
+        try {
+            customerService.deleteCustomer(id);
+            return "redirect:/admin/customers?success";
+        } catch (Exception e) {
+            return "redirect:/admin/customers?error";
+        }
     }
 
     @GetMapping("/admin/bookings")
@@ -135,12 +147,16 @@ public class WebController {
     public String addBooking(@ModelAttribute Booking booking,
                              @RequestParam Long customerId,
                              @RequestParam Long roomId) {
-        Customer customer = customerService.getCustomerById(customerId);
-        Room room = roomService.getRoomById(roomId);
-        booking.setCustomer(customer);
-        booking.setRoom(room);
-        bookingService.createBooking(booking);
-        return "redirect:/admin/bookings";
+        try {
+            Customer customer = customerService.getCustomerById(customerId);
+            Room room = roomService.getRoomById(roomId);
+            booking.setCustomer(customer);
+            booking.setRoom(room);
+            bookingService.createBooking(booking);
+            return "redirect:/admin/bookings?success";
+        } catch (Exception e) {
+            return "redirect:/admin/bookings?error";
+        }
     }
 
     @GetMapping("/admin/bookings/edit/{id}")
@@ -156,18 +172,26 @@ public class WebController {
                               @RequestParam Long customerId,
                               @RequestParam Long roomId,
                               @ModelAttribute Booking booking) {
-        Customer customer = customerService.getCustomerById(customerId);
-        Room room = roomService.getRoomById(roomId);
-        booking.setCustomer(customer);
-        booking.setRoom(room);
-        bookingService.updateBooking(id, booking);
-        return "redirect:/admin/bookings";
+        try {
+            Customer customer = customerService.getCustomerById(customerId);
+            Room room = roomService.getRoomById(roomId);
+            booking.setCustomer(customer);
+            booking.setRoom(room);
+            bookingService.updateBooking(id, booking);
+            return "redirect:/admin/bookings?success";
+        } catch (Exception e) {
+            return "redirect:/admin/bookings?error";
+        }
     }
 
     @PostMapping("/admin/bookings/delete/{id}")
     public String deleteBooking(@PathVariable Long id) {
-        bookingService.deleteBooking(id);
-        return "redirect:/admin/bookings";
+        try {
+            bookingService.deleteBooking(id);
+            return "redirect:/admin/bookings?success";
+        } catch (Exception e) {
+            return "redirect:/admin/bookings?error";
+        }
     }
 
     @GetMapping("/admin/rooms")
@@ -184,8 +208,12 @@ public class WebController {
 
     @PostMapping("/admin/rooms/add")
     public String addRoom(@ModelAttribute Room room) {
-        roomService.createRoom(room);
-        return "redirect:/admin/rooms";
+        try {
+            roomService.createRoom(room);
+            return "redirect:/admin/rooms?success";
+        } catch (Exception e) {
+            return "redirect:/admin/rooms?error";
+        }
     }
 
     @GetMapping("/admin/rooms/edit/{id}")
@@ -196,14 +224,22 @@ public class WebController {
 
     @PostMapping("/admin/rooms/edit/{id}")
     public String editRoom(@PathVariable Long id, @ModelAttribute Room room) {
-        roomService.updateRoom(id, room);
-        return "redirect:/admin/rooms";
+        try {
+            roomService.updateRoom(id, room);
+            return "redirect:/admin/rooms?success";
+        } catch (Exception e) {
+            return "redirect:/admin/rooms?error";
+        }
     }
 
     @PostMapping("/admin/rooms/delete/{id}")
     public String deleteRoom(@PathVariable Long id) {
-        roomService.deleteRoom(id);
-        return "redirect:/admin/rooms";
+        try {
+            roomService.deleteRoom(id);
+            return "redirect:/admin/rooms?success";
+        } catch (Exception e) {
+            return "redirect:/admin/rooms?error";
+        }
     }
 
     @GetMapping("/customer/book-room")
@@ -218,16 +254,20 @@ public class WebController {
                                          @RequestParam Long roomId,
                                          @RequestParam LocalDate checkInDate,
                                          @RequestParam LocalDate checkOutDate) {
-        Room room = roomService.getRoomById(roomId);
-        customer = customerService.createCustomer(customer);
-        Booking booking = new Booking();
-        booking.setCustomer(customer);
-        booking.setRoom(room);
-        booking.setCheckInDate(checkInDate);
-        booking.setCheckOutDate(checkOutDate);
-        booking.setStatus("Очікується");
-        bookingService.createBooking(booking);
-        return "redirect:/customer/my-bookings";
+        try {
+            Room room = roomService.getRoomById(roomId);
+            customer = customerService.createCustomer(customer);
+            Booking booking = new Booking();
+            booking.setCustomer(customer);
+            booking.setRoom(room);
+            booking.setCheckInDate(checkInDate);
+            booking.setCheckOutDate(checkOutDate);
+            booking.setStatus("Очікується");
+            bookingService.createBooking(booking);
+            return "redirect:/customer/my-bookings?success";
+        } catch (Exception e) {
+            return "redirect:/customer/my-bookings?error";
+        }
     }
 
     @GetMapping("/customer/my-bookings")
